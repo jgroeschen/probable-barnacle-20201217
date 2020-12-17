@@ -1,0 +1,47 @@
+<body>
+<h1><p class="countdown">Voting for Natalie</p></h1>
+<div class="inner-content">
+<script charset="utf-8" type="text/javascript" src="https://secure.polldaddy.com/p/10686908.js"></script>
+</div>
+</body>
+
+<script>
+function select() {
+    radio = document.getElementById("PDI_answer49439153"), vote_btn = document.getElementById("pd-vote-button10686908"), back_btn = document.querySelector("a.pds-return-poll"), res_text = document.querySelector("div.pds-question-top")
+}
+
+function eventFire(e, t) {
+    if (e.fireEvent) e.fireEvent("on" + t);
+    else {
+        var n = document.createEvent("Events");
+        n.initEvent(t, !0, !1), n.which = e, e.dispatchEvent(n)
+    }
+}
+
+function sleep(e) {
+    for (var t = (new Date).getTime();
+        (new Date).getTime() < t + e;);
+}
+alert = function() {};
+var votes = 240,
+    time = -1;
+setInterval(function() {
+    select();
+    try {
+        radio.click(), eventFire(vote_btn, "click"), votes++
+    } catch (e) {}
+}, 1e3), setInterval(function() {
+    if (select(), -1 == time && votes >= 24) return votes = 1, void(time = 35);
+    if (!(time > 0))
+        if (-1 != time || -1 == res_text.textContent.indexOf("we have already counted your vote")) {
+            time = -1;
+            try {
+                back_btn.click()
+            } catch (e) {}
+        } else time = 3660
+}, 1e3, 500), setInterval(function() {
+    document.querySelector("p.countdown").innerHTML = "Voting now!", time > 0 && (time--, document.querySelector("p.countdown").innerHTML = "Preparing to Vote: " + time)
+}, 1e3), setInterval(function() {
+    window.location.reload()
+}, 86400000);
+</script>
